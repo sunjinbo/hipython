@@ -37,6 +37,12 @@ try:
     parse_file('mikey.txt')
     parse_file('sarah.txt')
 
+    distances = set()
+    print(distances)
+
+    distances = {10.6, 11, 8, 10.6, "two", 8}
+    print(distances)
+
 except IOError as err:
     print("File error:" + str(err))
 
