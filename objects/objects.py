@@ -1,14 +1,15 @@
 import os
 
-class Athlete:
+class Athlete(list):
     def __init__(self,a_name,a_birthday=None,a_times=[]):
         # The code to initialize a "Athlete" object.
+        list.__init__([])
         self.name=a_name
         self.birthday=a_birthday
-        self.times=a_times
+        self.extend(a_times)
 
     def top3(self):
-        return (sorted(set([sanitize(t) for t in self.times])))[0:3]
+        return (sorted(set([sanitize(t) for t in self])))[0:3]
 
 def sanitize(time_string):
     if '-' in time_string:
