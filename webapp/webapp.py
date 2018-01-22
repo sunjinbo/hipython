@@ -26,6 +26,13 @@ def get_from_store():
     
     return all_athletes
 
+def print_athletes(all_athletes):
+    for each_athlete in all_athletes:
+        print(all_athletes[each_athlete].name + ' ' + all_athletes[each_athlete].birthday)
+
 files_list = {"james2.txt", "julie2.txt", "mikey2.txt", "sarah2.txt"}
 all_athletes = put_to_store(files_list)
-all_athletes = get_from_store()
+print_athletes(all_athletes)
+all_athletes_copy = get_from_store()
+print_athletes(all_athletes_copy)
+
