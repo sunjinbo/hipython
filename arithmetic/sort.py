@@ -4,11 +4,11 @@ lst = [6, 7, 3, 0, 4, 8, 15, 4]
 # 冒泡排序算法
 def bubbleSort(arr):
     sum = len(arr)
-    for i in range(sum):
-        for j in range(sum):
-            if arr[i] > arr[j]:
-                temp = arr[i]
-                arr[i] = arr[j]
+    for i in range(sum - 1):
+        for j in range(sum - i - 1):
+            if arr[j] < arr[j + 1]:
+                temp = arr[j + 1]
+                arr[j + 1] = arr[j]
                 arr[j] = temp
 
 
