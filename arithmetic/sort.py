@@ -40,35 +40,47 @@ def selectionSort(arr):
 # 快速排序算法
 def quickSort(aar, low, heigh):
     if low < heigh:
-        index = getIndex(aar, low, heigh)
+        index = getPivot(aar, low, heigh)
         quickSort(aar, 0, index - 1)
         quickSort(aar, index + 1, heigh)
 
 
-def getIndex(aar, low, heigh):
+def getPivot(aar, low, heigh):
     # 基准数据为数组第一个元素
-    basis = aar[low]
+    pivot = aar[low]
     while low < heigh:
         # 当队尾的元素大于等于基准数据时，向前挪动heigh的指针
-        while low < heigh and aar[heigh] >= basis:
+        while low < heigh and aar[heigh] >= pivot:
             heigh = heigh - 1
 
         # 如果队尾元素小于tmp了，需要将其赋值给low
         aar[low] = aar[heigh]
 
-        # 当队首元素小于等于basis时，向前挪动low指针
-        while low < heigh and aar[low] <= basis:
+        # 当队首元素小于等于pivot时，向前挪动low指针
+        while low < heigh and aar[low] <= pivot:
             low = low + 1
 
-        # 当队首元素大于basis时，需要将其赋值给high
+        # 当队首元素大于pivot时，需要将其赋值给high
         aar[heigh] = aar[low]
 
-    # 跳出循环时low和high相等，此时的low或high就是basis的正确索引位置
-    aar[low] = basis
+    # 跳出循环时low和high相等，此时的low或high就是pivot的正确索引位置
+    aar[low] = pivot
 
     return low
 
 
+# 快速排序，比上一个快速排序方法更容易理解
+def quickSort2(arr):
+    if len(arr) < 2:
+        return arr
+    else:
+        pivot = arr[0]
+        less = [i for i in arr[1:] if i <= pivot]
+        greater = [i for i in arr[1:] if i > pivot]
+        return quickSort2(less) + [pivot] + quickSort2(greater)
+
+
+# 测试代码
 bubbleSort(lst)
 print("bubble sort:")
 print(lst)
@@ -83,5 +95,12 @@ print(lst)
 print('\n')
 quickSort(lst, 0, len(lst) - 1)
 print("quick sort:")
+print(lst)
+print('\n')
+
+# 测试快速排序
+lst = [6, 7, 3, 0, 4, 8, 15, 4]
+lst = quickSort2(lst)
+print("quick sort 2:")
 print(lst)
 print('\n')
